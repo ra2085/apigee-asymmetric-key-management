@@ -31,12 +31,11 @@ var schema = {
         required: true
       },
 	  cleanup: {
-		  description: colors.yellow("Do you want to uninstall?"),
-		  message: colors.red("I need an answer!"),
-		  type: 'boolean',
-		  required: true,
-		  default: false
-	  }
+		  message: 'Do you want to uninstall?',
+		  validator: /y[es]*|n[o]?/,
+		  warning: 'Must respond yes or no',
+		  default: 'no'
+		}
     }
   };
  
@@ -52,7 +51,7 @@ prompt.get(schema, async function (err, options) {
 	opts.password = options.password;
 	opts.environments = options.env;
 	opts.directory = "./";
-	if(options.cleanup){
+	if(options.cleanup.startsWith("y")){
 		await deleteDeveloper(opts);
 		await deleteProduct(opts);
 		await deleteApp(opts);
