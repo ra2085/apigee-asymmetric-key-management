@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-Set-Variable-Decrypted-Key">
+    <DisplayName>EV-Set-Variable-Decrypted-Key</DisplayName>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Variable name="response.content">
+        <Pattern>{private.key_pair}</Pattern>
+    </Variable>
+    <Source clearPayload="false">response</Source>
+</ExtractVariables>

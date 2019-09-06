@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <Flows>
+        <Flow name="get /jwk">
+            <Description>Flow to generate asymmetric Keys and store them in KVM ApigeeWrapperKeys</Description>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>EV-Set-Variables-Key-Pair</Name>
+                </Step>
+                <Step>
+                    <Name>KVM-Put-Transport-Key-Pair</Name>
+                </Step>
+                <Step>
+                    <Name>AM-Set-Public-Key-Response</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/jwk") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="get /jwe">
+            <Description>Updates the KVM FMRSigningKeys with JWE Values</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-Get-Transport-Key-Pair</Name>
+                </Step>
+                <Step>
+                    <Name>AM-Set-HT-Decrypt-Request</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>EV-Set-Key-Pair-Variables</Name>
+                </Step>
+                <Step>
+                    <Name>AM-Set-PEM-Variables</Name>
+                </Step>
+                <Step>
+                    <Name>EV-Set-Variable-Decrypted-Key</Name>
+                </Step>
+                <Step>
+                    <Name>KVM-Put-Secret</Name>
+                </Step>
+                <Step>
+                    <Name>AM-Set-Key-Status-Response</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/jwe") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="get /jwt">
+            <Description>Get JWT token signed with a securely transported key pair</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-Get-Secret</Name>
+                </Step>
+                <Step>
+                    <Name>JWT-Generate</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-Set-JWT-Response</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/jwt") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="post /jwt">
+            <Description>Validate a JWT token signed with a securely transported key pair</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-Get-Secret</Name>
+                </Step>
+                <Step>
+                    <Name>JWT-Verify</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/jwt") and (request.verb = "POST")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>verifyApiKey</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/akmas</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="htarget">
+        <Condition>(proxy.pathsuffix MatchesPath "/jwe") or (proxy.pathsuffix MatchesPath "/jwk")</Condition>
+        <TargetEndpoint>htarget</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="noRoute"/>
+</ProxyEndpoint>

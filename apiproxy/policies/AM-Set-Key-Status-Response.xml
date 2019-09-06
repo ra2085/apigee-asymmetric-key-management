@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Set-Key-Status-Response">
+    <DisplayName>AM-Set-Key-Status-Response</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">{"Message":"Updated Apigee KVM", "REMOVE_THIS_decryptedValue":"{private.keypair}"}</Payload>
+    </Set>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVM-Put-Transport-Key-Pair" mapIdentifier="TransportKeys">
+    <DisplayName>KVM-Put-Transport-Key-Pair</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>-1</ExpiryTimeInSecs>
+    <Put override="true">
+        <Key>
+            <Parameter>txport_private_key</Parameter>
+        </Key>
+        <Value ref="private.privateKey"/>
+    </Put>
+    <Put override="true">
+        <Key>
+            <Parameter>txport_public_key</Parameter>
+        </Key>
+        <Value ref="private.publicKey"/>
+    </Put>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

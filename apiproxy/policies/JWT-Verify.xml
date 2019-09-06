@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT async="false" continueOnError="false" enabled="true" name="JWT-Verify">
+    <Algorithm>RS256</Algorithm>
+    <Source>request.header.jwt</Source>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <PublicKey>
+        <Value ref="private.jwt_public_key"/>
+    </PublicKey>
+    <Subject>subject-subject</Subject>
+    <Issuer>urn://apigee-edge-JWT-policy-test</Issuer>
+    <Audience>audience1,audience2</Audience>
+    <AdditionalClaims>
+        <Claim name="additional-claim-name" type="string">additional-claim-value-goes-here</Claim>
+    </AdditionalClaims>
+</VerifyJWT>

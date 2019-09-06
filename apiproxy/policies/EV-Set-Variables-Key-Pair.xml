@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-Set-Variables-Key-Pair">
+    <DisplayName>EV-Set-Variables-Key-Pair</DisplayName>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="private.publicKey">
+            <JSONPath>$.publicKey</JSONPath>
+        </Variable>
+        <Variable name="private.privateKey">
+            <JSONPath>$.privateKey</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">response</Source>
+</ExtractVariables>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Set-Public-Key-Response">
+    <DisplayName>AM-Set-Public-Key-Response</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">{private.publicKey}</Payload>
+    </Set>
+    <AssignTo createNew="true" transport="http" type="response"/>
+</AssignMessage>

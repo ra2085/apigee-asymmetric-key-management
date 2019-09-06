@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Set-JWT-Response">
+    <DisplayName>AM-Set-JWT-Response</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload>{jwt-variable}</Payload>
+    </Set>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

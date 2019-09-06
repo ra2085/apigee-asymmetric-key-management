@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVM-Get-Transport-Key-Pair" mapIdentifier="TransportKeys">
+    <DisplayName>KVM-Get-Transport-Key-Pair</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <Get assignTo="private.publicKey">
+        <Key>
+            <Parameter>txport_public_key</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="private.privateKey">
+        <Key>
+            <Parameter>txport_private_key</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

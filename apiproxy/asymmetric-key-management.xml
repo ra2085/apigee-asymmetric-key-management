@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="13" name="asymmetric-key-management">
+    <Basepaths>/akmas</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <Description></Description>
+    <DisplayName>asymmetric-key-management</DisplayName>
+    <Policies>
+        <Policy>AM-Set-HT-Decrypt-Request</Policy>
+        <Policy>AM-Set-JWT-Response</Policy>
+        <Policy>AM-Set-Key-Status-Response</Policy>
+        <Policy>AM-Set-PEM-Variables</Policy>
+        <Policy>AM-Set-Public-Key-Response</Policy>
+        <Policy>EV-Set-Key-Pair-Variables</Policy>
+        <Policy>EV-Set-Variable-Decrypted-Key</Policy>
+        <Policy>EV-Set-Variables-Key-Pair</Policy>
+        <Policy>JWT-Generate</Policy>
+        <Policy>JWT-Verify</Policy>
+        <Policy>KVM-Get-Secret</Policy>
+        <Policy>KVM-Get-Transport-Key-Pair</Policy>
+        <Policy>KVM-Put-Secret</Policy>
+        <Policy>KVM-Put-Transport-Key-Pair</Policy>
+        <Policy>add-cors</Policy>
+        <Policy>verifyApiKey</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>hosted://app.yaml</Resource>
+        <Resource>hosted://index.js</Resource>
+        <Resource>hosted://package.json</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>htarget</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
