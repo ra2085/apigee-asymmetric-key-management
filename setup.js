@@ -206,6 +206,7 @@ async function createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
 	localOptions.entryName = "gwjwt_key_pair";
+	localOptions.entryValue = "initial";
 	localOptions.environment = localOptions.environments;
 	return sdk.addEntryToKVM(localOptions);
 }
@@ -214,6 +215,7 @@ async function createEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
 	localOptions.entryName = "gwjwt_pem_private_key";
+	localOptions.entryValue = "initial";
 	localOptions.environment = localOptions.environments;
 	return sdk.addEntryToKVM(localOptions);
 }
@@ -222,6 +224,7 @@ async function createEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
 	localOptions.entryName = "gwjwt_pem_public_key";
+	localOptions.entryValue = "initial";
 	localOptions.environment = localOptions.environments;
 	return sdk.addEntryToKVM(localOptions);
 }
