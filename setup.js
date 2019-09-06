@@ -272,5 +272,6 @@ async function deployProxy(options) {
 async function undeployProxy(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.api = "asymmetric-key-management";
+	localOptions.environment = localOptions.environments;
 	return sdk.undeploy(localOptions);
 }
