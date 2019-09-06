@@ -134,7 +134,7 @@ async function deleteProduct(options) {
 async function createApp(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.name = "asymmetric-key-management-app";
-	localOptions.apiproducts = "asymmetric-key-management-product";
+	localOptions.apiProducts = "asymmetric-key-management-product";
 	localOptions.email = "someone@somewhere.com";
 	return sdk.createApp(localOptions);
 }
