@@ -51,6 +51,7 @@ prompt.get(schema, async function (err, options) {
 	opts.password = options.password;
 	opts.environments = options.env;
 	opts.directory = "./";
+	try {
 	if(options.cleanup.startsWith("y")){
 		await deleteDeveloper(opts);
 		await deleteProduct(opts);
@@ -70,6 +71,9 @@ prompt.get(schema, async function (err, options) {
 		await createDeveloper(opts);
 		await createProduct(opts);
 		await createApp(opts);
+	}
+	} catch (Exception ex){
+		console.log(ex);
 	}
 });
 
