@@ -54,7 +54,12 @@ prompt.get(schema, async function (err, options) {
 	try {
 	if(options.cleanup.startsWith("y")){
 		console.log("Uninstalling...");
+		await deleteEncryptedKVMTransportKeys_txport_private_key(opts);
+		await deleteEncryptedKVMTransportKeys_txport_public_key(opts);
 		await deleteEncryptedKVMTransportKeys(opts);
+		await deleteEncryptedKVMJWTKeyPairs_gwjwt_key_pair(opts);
+		await deleteEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(opts);
+		await deleteEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(opts);
 		await deleteEncryptedKVMJWTKeyPairs(opts);
 		await deleteDeveloper(opts);
 		await deleteProduct(opts);
@@ -177,6 +182,22 @@ async function createEncryptedKVMTransportKeys_txport_public_key(options) {
 	return sdk.addEntryToKVM(localOptions);
 }
 
+async function deleteEncryptedKVMTransportKeys_txport_private_key(options) {
+	let localOptions = jsonCopy(options);
+	localOptions.mapName = "TransportKeys";
+	localOptions.entryName = "txport_private_key";
+	localOptions.entryValue = "initial";
+	return sdk.deleteKVMentry(localOptions);
+}
+
+async function deleteEncryptedKVMTransportKeys_txport_public_key(options) {
+	let localOptions = jsonCopy(options);
+	localOptions.mapName = "TransportKeys";
+	localOptions.entryName = "txport_public_key";
+	localOptions.entryValue = "initial";
+	return sdk.deleteKVMentry(localOptions);
+}
+
 async function createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
@@ -196,6 +217,27 @@ async function createEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(options) {
 	localOptions.mapName = "JWTKeyPairs";
 	localOptions.entryName = "gwjwt_pem_public_key";
 	return sdk.addEntryToKVM(localOptions);
+}
+
+async function deleteEncryptedKVMJWTKeyPairs_gwjwt_key_pair(options) {
+	let localOptions = jsonCopy(options);
+	localOptions.mapName = "JWTKeyPairs";
+	localOptions.entryName = "gwjwt_key_pair";
+	return sdk.deleteKVMentry(localOptions);
+}
+
+async function deleteEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(options) {
+	let localOptions = jsonCopy(options);
+	localOptions.mapName = "JWTKeyPairs";
+	localOptions.entryName = "gwjwt_pem_private_key";
+	return sdk.deleteKVMentry(localOptions);
+}
+
+async function deleteEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(options) {
+	let localOptions = jsonCopy(options);
+	localOptions.mapName = "JWTKeyPairs";
+	localOptions.entryName = "gwjwt_pem_public_key";
+	return sdk.deleteKVMentry(localOptions);
 }
 
 async function deployProxy(options) {
