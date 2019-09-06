@@ -60,7 +60,7 @@ prompt.get(schema, async function (err, options) {
 		await deleteEncryptedKVMJWTKeyPairs(opts);
 	} else {	
 		await createEncryptedKVMTransportKeys(opts);
-		await deleteEncryptedKVMJWTKeyPairs(opts);
+		await createEncryptedKVMJWTKeyPairs(opts);
 		await createEncryptedKVMTransportKeys_txport_private_key(opts);
 		await createEncryptedKVMTransportKeys_txport_public_key(opts);
 		await createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(opts);
