@@ -53,6 +53,7 @@ prompt.get(schema, async function (err, options) {
 	opts.directory = "./";
 	try {
 	if(options.cleanup.startsWith("y")){
+		console.log("Uninstalling...");
 		await deleteDeveloper(opts);
 		await deleteProduct(opts);
 		await deleteApp(opts);
@@ -60,8 +61,10 @@ prompt.get(schema, async function (err, options) {
 		await deleteEncryptedKVMTransportKeys(opts);
 		await deleteEncryptedKVMJWTKeyPairs(opts);
 	} else {	
+		console.log("Installing...");
 		await createEncryptedKVMTransportKeys(opts);
 		await createEncryptedKVMJWTKeyPairs(opts);
+		console.log("Installed KVMs...")
 		await createEncryptedKVMTransportKeys_txport_private_key(opts);
 		await createEncryptedKVMTransportKeys_txport_public_key(opts);
 		await createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(opts);
