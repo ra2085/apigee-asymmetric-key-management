@@ -180,21 +180,21 @@ async function createEncryptedKVMTransportKeys_txport_public_key(options) {
 async function createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
-	localOptions.entrtName = "gwjwt_key_pair";
+	localOptions.entryName = "gwjwt_key_pair";
 	return sdk.addEntryToKVM(localOptions);
 }
 
 async function createEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
-	localOptions.entrtName = "gwjwt_pem_private_key";
+	localOptions.entryName = "gwjwt_pem_private_key";
 	return sdk.addEntryToKVM(localOptions);
 }
 
 async function createEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
-	localOptions.entrtName = "gwjwt_pem_public_key";
+	localOptions.entryName = "gwjwt_pem_public_key";
 	return sdk.addEntryToKVM(localOptions);
 }
 
