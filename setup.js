@@ -29,7 +29,14 @@ var schema = {
         hidden: true,  
         replace: '*',
         required: true
-      }
+      },
+	  cleanup: {
+		  description: colors.yellow("Do you want to uninstall?"),
+		  message: colors.red("I need an answer!"),
+		  type: 'boolean',
+		  required: true,
+		  default: false
+	  }
     }
   };
  
@@ -45,21 +52,24 @@ prompt.get(schema, async function (err, options) {
 	opts.password = options.password;
 	opts.environments = options.env;
 	opts.directory = "./";
-	await deleteDeveloper(opts);
-	await deleteProduct(opts);
-	await deleteApp(opts);
-	await undeployProxy(opts);
-	await deleteEncryptedKVMTransportKeys(opts);
-	await deleteEncryptedKVMJWTKeyPairs(opts);
-	await createEncryptedKVMTransportKeys_txport_private_key(opts);
-	await createEncryptedKVMTransportKeys_txport_public_key(opts);
-	await createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(opts);
-	await createEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(opts);
-	await createEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(opts);
-	await deployProxy(opts);
-	await createDeveloper(opts);
-	await createProduct(opts);
-	await createApp(opts);
+	if(options.cleanup){
+		await deleteDeveloper(opts);
+		await deleteProduct(opts);
+		await deleteApp(opts);
+		await undeployProxy(opts);
+		await deleteEncryptedKVMTransportKeys(opts);
+		await deleteEncryptedKVMJWTKeyPairs(opts);
+	} else {	
+		await createEncryptedKVMTransportKeys_txport_private_key(opts);
+		await createEncryptedKVMTransportKeys_txport_public_key(opts);
+		await createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(opts);
+		await createEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(opts);
+		await createEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(opts);
+		await deployProxy(opts);
+		await createDeveloper(opts);
+		await createProduct(opts);
+		await createApp(opts);
+	}
 });
 
 function jsonCopy(src) {
