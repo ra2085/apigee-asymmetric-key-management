@@ -54,12 +54,12 @@ prompt.get(schema, async function (err, options) {
 	try {
 	if(options.cleanup.startsWith("y")){
 		console.log("Uninstalling...");
+		await deleteEncryptedKVMTransportKeys(opts);
+		await deleteEncryptedKVMJWTKeyPairs(opts);
 		await deleteDeveloper(opts);
 		await deleteProduct(opts);
 		await deleteApp(opts);
 		await undeployProxy(opts);
-		await deleteEncryptedKVMTransportKeys(opts);
-		await deleteEncryptedKVMJWTKeyPairs(opts);
 	} else {	
 		console.log("Installing...");
 		await createEncryptedKVMTransportKeys(opts);
