@@ -61,24 +61,34 @@ prompt.get(schema, async function (err, options) {
 		await deleteEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(opts);
 		await deleteEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(opts);
 		await deleteEncryptedKVMJWTKeyPairs(opts);
+		console.log("KVMs Deleted...");
 		await deleteDeveloper(opts);
+		console.log("Developer Deleted...");
 		await deleteProduct(opts);
+		console.log("Product Deleted...");
 		await deleteApp(opts);
+		console.log("App Deleted...");
 		await undeployProxy(opts);
+		console.log("Proxy Undeployed...");
 	} else {	
 		console.log("Installing...");
 		await createEncryptedKVMTransportKeys(opts);
 		await createEncryptedKVMJWTKeyPairs(opts);
-		console.log("Installed KVMs...")
+		console.log("KVMs Created...")
 		await createEncryptedKVMTransportKeys_txport_private_key(opts);
 		await createEncryptedKVMTransportKeys_txport_public_key(opts);
 		await createEncryptedKVMJWTKeyPairs_gwjwt_key_pair(opts);
 		await createEncryptedKVMJWTKeyPairs_gwjwt_pem_private_key(opts);
 		await createEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(opts);
+		console.log("KVMs Entries Created...");
 		await deployProxy(opts);
+		console.log("Proxy Deployed...");
 		await createDeveloper(opts);
+		console.log("Developer Created...");
 		await createProduct(opts);
+		console.log("Product Created...");
 		await createApp(opts);
+		console.log("App Created...");
 	}
 	} catch (ex){
 		console.log(ex);
@@ -92,7 +102,7 @@ function jsonCopy(src) {
 async function createDeveloper(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.email = "someone@somewhere.com";
-	localOptions.fistName = "Someone";
+	localOptions.firstName = "Someone";
 	localOptions.lastName = "Somewhere";
 	localOptions.userName = "someonesomewhere";
 	return sdk.createDeveloper(localOptions);
