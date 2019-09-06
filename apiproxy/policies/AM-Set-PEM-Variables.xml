@@ -5,16 +5,12 @@
     <AssignVariable>
         <Name>private.jwt_private_key</Name>
         <Value>BADDBEEF</Value>
-        <Template>-----BEGIN PRIVATE KEY-----
-{private.encodedPrivateKey}
-	-----END PRIVATE KEY-----</Template>
+        <Template>-----BEGIN PRIVATE KEY-----{private.encodedPrivateKey}-----END PRIVATE KEY-----</Template>
     </AssignVariable>
     <AssignVariable>
-        <Name>public.jwt_public_key</Name>
+        <Name>private.jwt_public_key</Name>
         <Value>BADDBEEF</Value>
-        <Template>-----BEGIN PUBLIC KEY-----
-{private.encodedPublicKey}
------END PUBLIC KEY-----</Template>
+        <Template>-----BEGIN PUBLIC KEY-----{private.encodedPublicKey}-----END PUBLIC KEY-----</Template>
     </AssignVariable>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
     <AssignTo createNew="false" transport="http" type="response"/>

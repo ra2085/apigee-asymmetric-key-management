@@ -3,7 +3,7 @@
     <DisplayName>AM-Set-Key-Status-Response</DisplayName>
     <Properties/>
     <Set>
-        <Payload contentType="application/json">{"Message":"Updated Apigee KVM", "REMOVE_THIS_decryptedValue":"{private.keypair}"}</Payload>
+        <Payload contentType="application/json">{"Message":"Updated Apigee KVM", "REMOVE_THIS_decryptedValue":"{private.key_pair}"}</Payload>
     </Set>
     <AssignTo createNew="true" transport="http" type="response"/>
 </AssignMessage>
