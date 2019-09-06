@@ -135,12 +135,14 @@ async function createEncryptedKVMTransportKeys(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "TransportKeys";
 	localOptions.encrypted = true;
+	localOptions.environment = localOptions.environments;
 	return sdk.createKVM(localOptions);
 }
 
 async function deleteEncryptedKVMTransportKeys(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "TransportKeys";
+	localOptions.environment = localOptions.environments;
 	return sdk.deleteKVM(localOptions);
 }
 
@@ -148,12 +150,14 @@ async function createEncryptedKVMJWTKeyPairs(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
 	localOptions.encrypted = true;
+	localOptions.environment = localOptions.environments;
 	return sdk.createKVM(localOptions);
 }
 
 async function deleteEncryptedKVMJWTKeyPairs(options) {
 	let localOptions = jsonCopy(options);
 	localOptions.mapName = "JWTKeyPairs";
+	localOptions.environment = localOptions.environments;
 	return sdk.deleteKVM(localOptions);
 }
 
