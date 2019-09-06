@@ -62,12 +62,12 @@ prompt.get(schema, async function (err, options) {
 		await deleteEncryptedKVMJWTKeyPairs_gwjwt_pem_public_key(opts);
 		await deleteEncryptedKVMJWTKeyPairs(opts);
 		console.log("KVMs Deleted...");
+		await deleteApp(opts);
+		console.log("App Deleted...");
 		await deleteDeveloper(opts);
 		console.log("Developer Deleted...");
 		await deleteProduct(opts);
 		console.log("Product Deleted...");
-		await deleteApp(opts);
-		console.log("App Deleted...");
 		await undeployProxy(opts);
 		console.log("Proxy Undeployed...");
 	} else {	
