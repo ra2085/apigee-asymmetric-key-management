@@ -72,7 +72,7 @@ prompt.get(schema, async function (err, options) {
 		await createProduct(opts);
 		await createApp(opts);
 	}
-	} catch (Exception ex){
+	} catch (ex){
 		console.log(ex);
 	}
 });
