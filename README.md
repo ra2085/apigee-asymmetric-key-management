@@ -4,3 +4,7 @@ This is an Apigee Edge API Proxy that:
  - Uses Encrypted KVM key pair values to validate and sign JWTs using the RS256 algorithm.
 # NOT A GOOGLE PRODUCT
 This is not an officially supported Google product.
+License
+----
+MIT
+**Free Software, Hell Yeah!**

@@ -1,0 +1,19 @@
+{
+  "name": "asymmetric-key-managemet",
+  "version": "1.0.0",
+  "description": "Securely push values into an Encrypted Apigee KVM",
+  "main": "setup.js",
+  "scripts": {
+    "start": "npm install && node setup.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "apigeetool": "latest",
+    "replace-in-file": "latest",
+    "prompt": "latest"
+  }
+}
